@@ -113,6 +113,7 @@
 
   # the pmic keys as a console input device, the stock ButtonsDxe is not here
   INF pdx203Pkg/Drivers/Pdx203KeyInputDxe/Pdx203KeyInputDxe.inf
+  INF pdx203Pkg/Drivers/Pdx203UsbDxe/Pdx203UsbDxe.inf
 
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 

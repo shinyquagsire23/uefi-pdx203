@@ -126,3 +126,4 @@
   #
   pdx203Pkg/Drivers/Pdx203BootMemoryDxe/Pdx203BootMemoryDxe.inf
   pdx203Pkg/Drivers/Pdx203KeyInputDxe/Pdx203KeyInputDxe.inf
+  pdx203Pkg/Drivers/Pdx203UsbDxe/Pdx203UsbDxe.inf

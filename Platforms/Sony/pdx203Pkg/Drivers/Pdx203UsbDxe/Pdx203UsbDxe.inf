@@ -1,0 +1,23 @@
+[Defines]
+  INF_VERSION                    = 0x0001001B
+  BASE_NAME                      = Pdx203UsbDxe
+  FILE_GUID                      = EE6B6602-CEEB-41DD-ABBA-D4F164A8FE5E
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = Pdx203UsbDxeEntry
+
+[Sources]
+  Pdx203UsbDxe.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  BaseLib
+  DebugLib
+  IoLib
+  TimerLib
+  UefiDriverEntryPoint
+
+[Depex]
+  TRUE
