@@ -6,8 +6,8 @@
   secure side and the subsystems own. without the stock memory manager the firmware only knows the few regions of its own memory
   map, so:
 
-  * dram that no firmware region claims and no reserved-memory node covers is added to the gcd as system memory, up to a fixed
-    amount below 4 gb (what the mmu set-up maps),
+  * dram that no firmware region claims and no reserved-memory node covers is added to the gcd as system memory, the upper
+    bank above 4 gb included (the mmu set-up sizes its 1:1 map from the cpu's physical address width, not from 4 gb),
   * the initrd the loader placed in memory (/chosen linux,initrd-start and -end) is published as a read-only block device, so a
     fat image in the boot image ramdisk shows up as a normal volume for the boot manager.
 
@@ -30,8 +30,11 @@
 
 #define MAX_RANGES        64
 #define MIN_PIECE_SIZE    SIZE_16MB
-#define ADD_LIMIT         SIZE_1GB
-#define ADD_BELOW         SIZE_4GB     // stay inside what the mmu set-up maps
+// the whole of the 8 gb part. the earlier 1 gb below 4 gb (from sheng) left xnu a 512 mib window, and on the phone
+// (2026-11-01) the ipados userland ran out of pages before launchd finished its boot tasks (free=0x29b of 0x1b733). ios-sweet
+// ran xnu in the upper bank (0x1_00000000 + 0xfcc00000) on this phone, ufs dma there included
+#define ADD_LIMIT         SIZE_8GB
+#define ADD_BELOW         MAX_UINT64
 
 typedef struct {
   UINT64  Base;
