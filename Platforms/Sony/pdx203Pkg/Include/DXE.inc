@@ -52,7 +52,8 @@
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
-  # the boot image ramdisk as a block device and the dram the loader's device tree lists
+  # the boot image ramdisk as a block device and the dram the loader's device tree lists (dispatched from APRIORI.inc,
+  # right after CpuDxe)
   INF pdx203Pkg/Drivers/Pdx203BootMemoryDxe/Pdx203BootMemoryDxe.inf
 
   # the xnu loader is part of the firmware, a driver loaded from a volume is refused by the image verification of this build

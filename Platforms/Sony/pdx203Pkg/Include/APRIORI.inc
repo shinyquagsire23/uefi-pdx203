@@ -10,6 +10,13 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/StatusCodeHandler/RuntimeDxe/StatusCodeHandlerRuntimeDxe.inf
   INF MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
   INF ArmPkg/Drivers/CpuDxe/CpuDxe.inf
+
+  # the dram the loader's device tree lists, as early as it can go: it needs the cpu arch protocol (SetMemorySpaceAttributes
+  # returns EFI_NOT_AVAILABLE_YET without it), and everything dispatched before it lives in the 69 mb "DXE Heap". dispatched
+  # after the apriori list, the DEBUG build ran that heap dry and the allocator's last fallback put boot services code into
+  # the free part of the runtime bins (CoreMemoryMapSanityCheck assert in Page.c on the first GetMemoryMap)
+  INF pdx203Pkg/Drivers/Pdx203BootMemoryDxe/Pdx203BootMemoryDxe.inf
+
   INF ArmPkg/Drivers/ArmGicDxe/ArmGicDxe.inf
   INF EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
   INF ArmPkg/Drivers/TimerDxe/TimerDxe.inf
