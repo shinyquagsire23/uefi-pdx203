@@ -57,6 +57,8 @@ gMemoryDescriptor[] = {
   {"IMEM Cookie Base",  0x146BF000, 0x00001000, AddDev, MMAP_IO, INITIALIZED, Conv,   NS_DEVICE},
 
   // Register Regions
+  // the usb30_prim branch clocks, gdsc and hs phy reset (Pdx203UsbDxe); sm8250.dtsi gcc reg <0x100000 0x1f0000>
+  {"GCC CLK CTL",       0x00100000, 0x001F0000, AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE},
   {"IPC_ROUTER_TOP",    0x00400000, 0x00100000, AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE},
   {"SECURITY CONTROL",  0x00780000, 0x00007000, AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE},
   {"PRNG_CFG_PRNG",     0x00790000, 0x00010000, AddDev, MMAP_IO, UNCACHEABLE, MmIO,   NS_DEVICE},
